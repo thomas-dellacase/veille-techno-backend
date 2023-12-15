@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsEmail } from "class-validator";
+import { IsNotEmpty, IsEmail, IsOptional } from "class-validator";
 
 export class SignupDTO {
     @IsNotEmpty()
@@ -11,12 +11,13 @@ export class SignupDTO {
     @IsNotEmpty()
     readonly password: string;
 
-    readonly droit: string;
+    @IsOptional()
+    readonly droit?: string; // Make it optional
 
-    constructor(email: string, username: string, password: string, droit: string = "1") {
+    constructor(email: string, username: string, password: string, droit?: string) {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.droit = droit;
+        this.droit = droit !== undefined && droit !== '' ? droit : "1"; // Set the default value only if droit is not provided or empty
     }
 }

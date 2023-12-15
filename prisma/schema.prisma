@@ -15,5 +15,5 @@ model Users {
   username  String   @unique @db.VarChar(50)
   email     String   @unique @db.VarChar(50)
   password  String   @db.VarChar(255)
-  droit     String   @db.VarChar(1)
+  droit     String   @db.VarChar(1) @default("1")
 }

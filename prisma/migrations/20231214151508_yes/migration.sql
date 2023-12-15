@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Users` MODIFY `droit` VARCHAR(1) NOT NULL DEFAULT '1';
